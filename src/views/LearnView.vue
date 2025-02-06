@@ -98,13 +98,19 @@ export default defineComponent({
       this.playAudio();
     },
 
+    sanitizeFilename(question: string): string {
+      return question
+        .replace(/\?/g, '')       // remove question marks
+        .replace(/\s+/g, '_');    // replace spaces with underscores
+    },
+
     /**
      * Construct the audio source from the question text.
      * You may need to adjust for special characters or spaces.
      */
     getAudioSrc(question: string): string {
       // Use encodeURIComponent if your filenames have special chars/spaces:
-      return `/audio/${encodeURIComponent(question)}.mp3`;
+      return `/audio/${this.sanitizeFilename(question)}.mp3`;
     },
 
     /**
