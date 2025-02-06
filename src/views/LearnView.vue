@@ -4,14 +4,10 @@
     <!-- Show the question with the first word replaced by ＿ -->
     <p class="mb-2 text-3xl m-2">
       <span class="font-semibold">Question:</span>
-      <span>{{ questionWithBlank }}</span>
+      <span v-if="!isAnswered">{{ questionWithBlank }}</span>
+      <span v-else> {{ question }}</span>
     </p>
 
-    <!-- Reveal the full question once user has selected an answer -->
-    <p v-if="isAnswered" class="mb-4 text-sm text-gray-500">
-      <span class="font-semibold">Full question:</span>
-      {{ question }}
-    </p>
 
     <!-- Answer choices -->
     <div class="space-x-2 ">

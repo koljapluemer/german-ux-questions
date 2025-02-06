@@ -28,10 +28,12 @@ export function pickRandomQuestion(questions: string[]): {
     let chosenQuestion = '';
 
     if (dueItems.length > 5) {
+        console.log('More than 5 items are due. Picking from these.');
         // If more than 5 are due, pick from these
         const randomIndex = Math.floor(Math.random() * dueItems.length);
         chosenQuestion = dueItems[randomIndex].question;
     } else {
+        console.log('Less than 5 items are due. Picking a new question.');
         // Otherwise pick a question not yet in 'items'
         const usedQuestions = items.map((i) => i.question);
         const newQuestions = questions.filter((q) => !usedQuestions.includes(q));
